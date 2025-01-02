@@ -104,13 +104,10 @@ We can import the data with `nhanesA` packages
 demographics <- nhanes("DEMO_G")
 examination  <- nhanes("BPX_G")
 laboratory   <- nhanes("ALB_CR_G")
-questionnaire <- nhanes("AQL_G")
+questionnaire <- nhanes("ALQ_G")
 
 # Preview the imported data tables
 glimpse(demographics)
-glimpse(examination)
-glimpse(laboratory)
-glimpse(questionnaire)
 ```
 
 ### 3. Merge Data Tables
@@ -127,7 +124,7 @@ nhanes_merged <- demographics %>%
 # Verify the merge
 dim(nhanes_merged)
 glimpse(nhanes_merged)
-
+sapply(nhanes_merged, function(x){sum(is.na(x))/length(x)})
 ```
 
 
